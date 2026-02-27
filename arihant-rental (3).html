@@ -1,0 +1,507 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Arihant – 1BHK for Rent | Vijayapur</title>
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --orange: #f97316;
+    --orange-dark: #ea580c;
+    --orange-light: #fff7ed;
+    --beige: #fdf6ec;
+    --brown: #7c2d12;
+    --text: #1c1917;
+    --text-mid: #44403c;
+    --text-soft: #78716c;
+    --white: #ffffff;
+    --shadow: 0 4px 24px rgba(0,0,0,0.10);
+    --radius: 18px;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Nunito', sans-serif;
+    background: var(--beige);
+    color: var(--text);
+    font-size: 16px;
+    padding-bottom: 80px;
+  }
+
+  /* ── NAV ── */
+  nav {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: var(--white);
+    box-shadow: 0 2px 16px rgba(0,0,0,0.10);
+    padding: 14px 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+  }
+  .nav-title {
+    font-size: 1.15rem;
+    font-weight: 900;
+    color: var(--text);
+    letter-spacing: -0.3px;
+  }
+  .nav-title span { color: var(--orange); }
+  .badge-rent {
+    background: var(--orange);
+    color: #fff;
+    font-size: 0.72rem;
+    font-weight: 800;
+    padding: 4px 12px;
+    border-radius: 50px;
+    letter-spacing: 0.5px;
+    white-space: nowrap;
+  }
+
+  /* ── HERO ── */
+  .hero {
+    position: relative;
+    /* taller hero so the full image can fit; use viewport height to scale responsively */
+    min-height: 50vh;
+    display: flex;
+    align-items: flex-end;
+    overflow: hidden;
+    background: transparent;
+  }
+  .hero-img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    /* make the entire image visible without cropping */
+    background-image: url('front.jpeg');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: contain;
+    opacity: 0.95;
+  }
+  .hero-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(160deg, rgba(30,10,0,0.45) 0%, rgba(20,5,0,0.82) 100%);
+  }
+  .hero-content {
+    position: relative;
+    z-index: 2;
+    padding: 32px 24px 36px;
+    width: 100%;
+  }
+  .hero-badge {
+    display: inline-block;
+    background: rgba(255,255,255,0.18);
+    border: 1.5px solid rgba(255,255,255,0.5);
+    color: #fff;
+    font-size: 0.78rem;
+    font-weight: 700;
+    padding: 5px 14px;
+    border-radius: 50px;
+    margin-bottom: 14px;
+    backdrop-filter: blur(4px);
+    letter-spacing: 0.3px;
+  }
+  .hero h1 {
+    font-size: clamp(2rem, 7vw, 2.8rem);
+    font-weight: 900;
+    color: #fff;
+    line-height: 1.1;
+    text-shadow: 0 3px 20px rgba(0,0,0,0.8), 0 1px 4px rgba(0,0,0,0.9);
+    margin-bottom: 8px;
+    letter-spacing: -0.5px;
+  }
+  .hero p {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: rgba(255,255,255,0.90);
+    text-shadow: 0 2px 10px rgba(0,0,0,0.7);
+    margin-bottom: 22px;
+  }
+  .btn-primary {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: var(--orange);
+    color: #fff;
+    font-family: 'Nunito', sans-serif;
+    font-size: 1rem;
+    font-weight: 800;
+    padding: 13px 28px;
+    border-radius: 50px;
+    border: none;
+    cursor: pointer;
+    text-decoration: none;
+    box-shadow: 0 4px 20px rgba(249,115,22,0.5);
+    transition: background 0.2s, transform 0.15s;
+  }
+  .btn-primary:active { transform: scale(0.97); background: var(--orange-dark); }
+
+  /* ── SECTION WRAPPER ── */
+  section { padding: 36px 20px; }
+  .section-title {
+    font-size: 1.45rem;
+    font-weight: 900;
+    color: var(--text);
+    margin-bottom: 20px;
+    letter-spacing: -0.3px;
+  }
+  .section-title span { color: var(--orange); }
+
+  /* ── ADDRESS ── */
+  .address-card {
+    background: var(--white);
+    border-radius: var(--radius);
+    padding: 24px 22px;
+    box-shadow: var(--shadow);
+    border-left: 5px solid var(--orange);
+  }
+  .address-icon { font-size: 2rem; margin-bottom: 10px; }
+  .address-card p {
+    font-size: 1.05rem;
+    font-weight: 600;
+    color: var(--text-mid);
+    line-height: 1.7;
+  }
+  .address-card .city-highlight {
+    font-size: 1.2rem;
+    font-weight: 900;
+    color: var(--orange-dark);
+    background: #fff3e0;
+    padding: 2px 8px;
+    border-radius: 8px;
+  }
+
+  /* ── DETAILS GRID ── */
+  .details-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 14px;
+  }
+  .detail-card {
+    background: var(--white);
+    border-radius: var(--radius);
+    padding: 18px 14px;
+    box-shadow: var(--shadow);
+    text-align: center;
+    transition: transform 0.2s;
+  }
+  .detail-card:active { transform: scale(0.97); }
+  .detail-card .icon { font-size: 2rem; margin-bottom: 6px; }
+  .detail-card p { font-size: 0.92rem; font-weight: 700; color: var(--text-mid); }
+
+  /* ── GALLERY ── */
+  .gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 14px;
+  }
+  .gallery-item {
+    border-radius: var(--radius);
+    overflow: hidden;
+    box-shadow: var(--shadow);
+    background: #e7d5c0;
+    position: relative;
+    aspect-ratio: 4/3;
+  }
+  .gallery-item img,
+  .gallery-item .img-placeholder {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+  .img-placeholder {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, #f5e6d3, #e8cdb0);
+    color: var(--text-soft);
+    font-size: 2rem;
+    font-weight: 700;
+    gap: 8px;
+  }
+  .img-placeholder span { font-size: 0.8rem; font-weight: 600; }
+  .gallery-label {
+    position: absolute;
+    bottom: 0; left: 0; right: 0;
+    background: linear-gradient(transparent, rgba(0,0,0,0.68));
+    color: #fff;
+    font-size: 0.88rem;
+    font-weight: 800;
+    padding: 18px 12px 10px;
+    letter-spacing: 0.3px;
+  }
+
+  /* ── LOCATION ── */
+  .map-wrap {
+    border-radius: var(--radius);
+    overflow: hidden;
+    box-shadow: var(--shadow);
+    margin-bottom: 16px;
+    background: #e7d5c0;
+  }
+  .map-wrap iframe {
+    width: 100%;
+    height: 240px;
+    border: none;
+    display: block;
+  }
+  .btn-outline {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: transparent;
+    color: var(--orange-dark);
+    font-family: 'Nunito', sans-serif;
+    font-size: 1rem;
+    font-weight: 800;
+    padding: 12px 26px;
+    border-radius: 50px;
+    border: 2.5px solid var(--orange);
+    cursor: pointer;
+    text-decoration: none;
+    transition: background 0.2s, color 0.2s;
+    width: 100%;
+    justify-content: center;
+  }
+  .btn-outline:active { background: var(--orange); color: #fff; }
+
+  /* ── CONTACT ── */
+  .contact-card {
+    background: var(--white);
+    border-radius: var(--radius);
+    padding: 28px 22px;
+    box-shadow: var(--shadow);
+    text-align: center;
+  }
+  .contact-card .phone-num {
+    font-size: 2rem;
+    font-weight: 900;
+    color: var(--text);
+    letter-spacing: 1px;
+    margin: 12px 0;
+  }
+  .contact-card .sub {
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: var(--text-soft);
+    margin-bottom: 20px;
+  }
+  .btn-call {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    background: #22c55e;
+    color: #fff;
+    font-family: 'Nunito', sans-serif;
+    font-size: 1.2rem;
+    font-weight: 900;
+    padding: 16px;
+    border-radius: 50px;
+    border: none;
+    cursor: pointer;
+    text-decoration: none;
+    box-shadow: 0 4px 20px rgba(34,197,94,0.4);
+    transition: background 0.2s, transform 0.15s;
+    width: 100%;
+  }
+  .btn-call:active { transform: scale(0.97); background: #16a34a; }
+
+  /* ── FIXED BOTTOM BAR ── */
+  .bottom-bar {
+    position: fixed;
+    bottom: 0; left: 0; right: 0;
+    z-index: 200;
+    background: var(--white);
+    box-shadow: 0 -3px 20px rgba(0,0,0,0.13);
+    padding: 10px 16px;
+    display: flex;
+    gap: 10px;
+  }
+  .bottom-bar a {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 7px;
+    border-radius: 50px;
+    font-family: 'Nunito', sans-serif;
+    font-size: 0.97rem;
+    font-weight: 800;
+    padding: 13px 10px;
+    text-decoration: none;
+    transition: opacity 0.2s;
+  }
+  .bottom-bar a:active { opacity: 0.85; }
+  .bottom-call { background: #22c55e; color: #fff; }
+  .bottom-dir { background: var(--orange); color: #fff; }
+
+  /* ── DIVIDER ── */
+  .divider { height: 1px; background: #e7d5c0; margin: 0 20px; }
+
+  /* ── TABLET / DESKTOP ── */
+  @media (min-width: 600px) {
+    .details-grid { grid-template-columns: repeat(4, 1fr); }
+    .gallery-grid { grid-template-columns: repeat(2, 1fr); }
+    .hero { min-height: 400px; max-height: 600px; }
+  }
+  @media (min-width: 900px) {
+    body { font-size: 17px; }
+    section { padding: 48px 40px; max-width: 860px; margin: 0 auto; }
+    nav { padding: 16px 40px; }
+    .bottom-bar { max-width: 420px; left: 50%; transform: translateX(-50%); border-radius: 24px 24px 0 0; }
+  }
+  /* Mobile-specific adjustments */
+  @media (max-width: 599px) {
+    body { padding-bottom: 120px; }
+    section { padding: 20px 14px; }
+    .hero { min-height: 55vh; align-items: center; }
+    .hero-content { padding: 20px 16px 28px; }
+    .hero-badge { width: 100%; text-align: center; box-sizing: border-box; padding: 8px 12px; margin-bottom: 10px; }
+    .hero h1 { font-size: 1.6rem; line-height: 1.15; letter-spacing: -0.3px; }
+    .hero p { font-size: 1rem; margin-bottom: 16px; }
+    .btn-primary { width: 100%; padding: 14px 18px; justify-content: center; }
+
+    /* single-column grids for mobile */
+    .details-grid { grid-template-columns: 1fr; }
+    .gallery-grid { grid-template-columns: 1fr; }
+    .gallery-item { aspect-ratio: 4/3; }
+
+    /* bottom bar spacing & larger tap targets */
+    .bottom-bar { padding: 12px; gap: 8px; }
+    .bottom-bar a { padding: 14px 12px; font-size: 1rem; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-title"><span>Arihant</span> – 1BHK for Rent</div>
+  <span class="badge-rent">FOR RENT</span>
+</nav>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-img" style="background-image:url('front.jpeg');"></div>
+  <div class="hero-overlay"></div>
+  <div class="hero-content">
+    <div class="hero-badge">🌿 Vegetarians Only &nbsp;|&nbsp; Open for All</div>
+    <h1>1BHK House<br>for Rent</h1>
+    <p>Spacious and Comfortable Living</p>
+    <a href="#location" class="btn-primary">📍 View Location</a>
+  </div>
+</div>
+
+<!-- ADDRESS -->
+<section id="address">
+  <div class="section-title">📌 Property <span>Address</span></div>
+  <div class="address-card">
+    <div class="address-icon">🏠</div>
+    <p>
+      <strong>Building: Arihant</strong><br>
+      Plot No. 39B, Sy. No-91C<br>
+      Jaynagar Colony,<br>
+      Near Maha Laxmi Temple, Ashram Road,<br>
+      <span class="city-highlight">Vijayapur – 586103</span>
+    </p>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- HOUSE DETAILS -->
+<section id="details">
+  <div class="section-title">🏡 House <span>Details</span></div>
+  <div class="details-grid">
+    <div class="detail-card"><div class="icon">🛏️</div><p>1 Bedroom</p></div>
+    <div class="detail-card"><div class="icon">🛋️</div><p>1 Hall</p></div>
+    <div class="detail-card"><div class="icon">🍳</div><p>1 Kitchen</p></div>
+    <div class="detail-card"><div class="icon">🚿</div><p>1 Bathroom</p></div>
+    <div class="detail-card"><div class="icon">💨</div><p>Good Ventilation</p></div>
+    <div class="detail-card"><div class="icon">🛕</div><p>Near Temple</p></div>
+    <div class="detail-card"><div class="icon">🛣️</div><p>Near Main Road</p></div>
+    <div class="detail-card"><div class="icon">👨‍👩‍👧</div><p>Suitable for Everyone</p></div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- GALLERY -->
+<section id="gallery">
+  <div class="section-title">📸 Photo <span>Gallery</span></div>
+  <div class="gallery-grid">
+
+    <div class="gallery-item">
+      <img src="hall front.jpeg" alt="Hall" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+      <div class="img-placeholder" style="display:none;">🛋️<span>Hall</span></div>
+      <div class="gallery-label">Hall</div>
+    </div>
+
+    <div class="gallery-item">
+      <img src="bedroom.jpeg" alt="Bedroom" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+      <div class="img-placeholder" style="display:none;">🛏️<span>Bedroom</span></div>
+      <div class="gallery-label">Bedroom</div>
+    </div>
+
+    <div class="gallery-item">
+      <img src="kitchen.jpeg" alt="Kitchen" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+      <div class="img-placeholder" style="display:none;">🍳<span>Kitchen</span></div>
+      <div class="gallery-label">Kitchen</div>
+    </div>
+
+    <div class="gallery-item">
+      <img src="bathroom.jpeg" alt="Bathroom" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+      <div class="img-placeholder" style="display:none;">🚿<span>Bathroom</span></div>
+      <div class="gallery-label">Bathroom</div>
+    </div>
+
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- LOCATION -->
+<section id="location">
+  <div class="section-title">🗺️ <span>Location</span></div>
+  <div class="map-wrap">
+    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d438.7725156855585!2d75.71796013491821!3d16.85413635002222!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bc65500036cc92d%3A0x6bd7ffb1e8e48242!2sArihant%201BHK!5e1!3m2!1sen!2sin!4v1772211121726!5m2!1sen!2sin" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+  </div>
+  <a href="https://maps.app.goo.gl/P3vtFyRBLfLey2LB8" target="_blank" class="btn-outline">
+    🧭 Open in Google Maps
+  </a>
+</section>
+
+<div class="divider"></div>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="section-title">📞 Contact <span>Us</span></div>
+  <div class="contact-card">
+    <p style="font-size:1rem;font-weight:700;color:var(--text-soft);">For Rent Enquiries</p>
+    <div class="phone-num">📱 9342306279</div>
+    <p class="sub">Available anytime for enquiries</p>
+    <a href="tel:9342306279" class="btn-call">
+      📞 Call Now
+    </a>
+  </div>
+</section>
+
+<!-- FIXED BOTTOM BAR -->
+<div class="bottom-bar">
+  <a href="tel:9342306279" class="bottom-call">📞 Call Now</a>
+  <a href="https://maps.app.goo.gl/P3vtFyRBLfLey2LB8" target="_blank" class="bottom-dir">🧭 Get Directions</a>
+</div>
+
+</body>
+</html>
